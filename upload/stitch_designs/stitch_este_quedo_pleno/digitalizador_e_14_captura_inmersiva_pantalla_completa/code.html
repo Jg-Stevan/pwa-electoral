@@ -1,0 +1,180 @@
+<!DOCTYPE html><html class="h-full" lang="es" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#007aff",
+            "primary-container": "#0058bc",
+            "surface-dark": "rgba(20, 20, 24, 0.72)",
+            "surface-dim-dark": "rgba(10, 10, 14, 0.55)"
+          },
+          fontFamily: {
+            body: ["Inter", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html, body {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #000000;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      .pt-safe {
+        padding-top: max(env(safe-area-inset-top, 0px), 14px);
+      }
+      .pb-safe {
+        padding-bottom: max(env(safe-area-inset-bottom, 0px), 10px);
+      }
+    }
+  </style>
+</head>
+<body class="bg-black text-white font-body antialiased h-screen w-screen flex flex-col justify-between overflow-hidden relative">
+<!-- Full-Bleed Live Camera Viewport Background -->
+<div class="absolute inset-0 w-full h-full overflow-hidden z-0">
+<img alt="Vista en vivo de cámara para digitalización de documento" class="w-full h-full object-cover object-center filter contrast-[1.04] brightness-95" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzctARPAxXQvyH_xqrsccJk1EmSxosfD6Nx5zQA40k5G2GJQxsBt_s0qWnBdiu8RJzsRq4-GxoW8GcrgJ12qs6Op7l8RkE1gzHU6wgeWMJxAlZCTghVo4RqYqzTeVf2NAy5lPWFJIg2svlsSGXahqv0-OsaNCHpnq8erKoYZFJbWBb15XseTXYQIjGmvJKl_9spNpKNP-nvt50pAAwCVdOK5xY_cccCYinvIwoPmGR">
+<!-- Cinematic subtle vignette & darkening overlay -->
+<div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80 pointer-events-none"></div>
+<!-- Active Perspective Quad Detection Polygon & Interactive Nodes -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none z-10" preserveAspectRatio="none" viewBox="0 0 100 100">
+<!-- Polyfill subtle tinted area & crisp border matching #007AFF -->
+<polygon class="fill-[#007aff]/10 stroke-[#007aff] stroke-[0.6] stroke-linejoin-round" points="30.2,29.5 53.0,28.2 100,81.5 25.4,58.8"></polygon>
+</svg>
+<!-- Polygon Interactive Corner Drag Handles (White circle with #007AFF border) -->
+<!-- Handle 1 (Top Left): 30.2%, 29.5% -->
+<div class="absolute z-20 -translate-x-1/2 -translate-y-1/2 pointer-events-auto cursor-pointer" style="left: 30.2%; top: 29.5%;">
+<div class="w-3.5 h-3.5 rounded-full bg-white border-[2.5px] border-[#007aff] shadow-[0_0_8px_rgba(0,122,255,0.7)] active:scale-125 transition-transform duration-100"></div>
+</div>
+<!-- Handle 2 (Top Right): 53.0%, 28.2% -->
+<div class="absolute z-20 -translate-x-1/2 -translate-y-1/2 pointer-events-auto cursor-pointer" style="left: 53.0%; top: 28.2%;">
+<div class="w-3.5 h-3.5 rounded-full bg-white border-[2.5px] border-[#007aff] shadow-[0_0_8px_rgba(0,122,255,0.7)] active:scale-125 transition-transform duration-100"></div>
+</div>
+<!-- Handle 3 (Bottom Left): 25.4%, 58.8% -->
+<div class="absolute z-20 -translate-x-1/2 -translate-y-1/2 pointer-events-auto cursor-pointer" style="left: 25.4%; top: 58.8%;">
+<div class="w-3.5 h-3.5 rounded-full bg-white border-[2.5px] border-[#007aff] shadow-[0_0_8px_rgba(0,122,255,0.7)] active:scale-125 transition-transform duration-100"></div>
+</div>
+<!-- Handle 4 (Far Bottom Right point): 100%, 81.5% -->
+<div class="absolute z-20 -translate-x-1/2 -translate-y-1/2 pointer-events-auto cursor-pointer" style="left: 99.5%; top: 81.5%;">
+<div class="w-3.5 h-3.5 rounded-full bg-white border-[2.5px] border-[#007aff] shadow-[0_0_8px_rgba(0,122,255,0.7)] active:scale-125 transition-transform duration-100"></div>
+</div>
+</div>
+<!-- TOP MINIMAL FLOATING APP BAR -->
+<header class="relative z-30 pt-safe px-4 pb-2 w-full flex items-center justify-between">
+<!-- Left: Close (✕) Button -->
+<button aria-label="Cerrar visor" class="w-10 h-10 flex items-center justify-center text-white/95 hover:text-white active:opacity-60 transition-opacity" type="button">
+<span class="material-symbols-outlined text-[23px] font-light">close</span>
+</button>
+<!-- Center: AI / Grid / AUTO Integrated Pill -->
+<div class="h-8 px-2.5 rounded-full bg-black/55 backdrop-blur-xl border border-white/10 flex items-center gap-2.5 shadow-sm">
+<!-- IA Badge -->
+<span class="px-1 py-0.5 rounded-[4px] bg-white text-black text-[10px] font-bold tracking-tight leading-none flex items-center justify-center">
+        IA
+      </span>
+<!-- 2x2 Grid / Mosaic Icon -->
+<button aria-label="Modo cuadrícula" class="text-white/90 hover:text-white flex items-center justify-center active:scale-90 transition-transform" type="button">
+
+</button>
+<!-- Auto Mode Indicator with Blue Dot -->
+<button aria-label="Cambiar modo automático" class="flex items-center gap-1.5 text-white font-medium text-[11px] tracking-wider active:scale-95 transition-transform pl-0.5" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-[#007aff]"></span>
+<span class="font-bold tracking-normal">AUTO</span>
+</button>
+</div>
+<!-- Right Controls: Viewfinder Frame Button & More Options (⋮) -->
+<div class="flex items-center gap-1.5">
+<!-- Framed Yellow Scanner Reticle Button -->
+<button aria-label="Ajustar visor" class="w-9 h-9 rounded-full bg-yellow-400/20 border border-yellow-400/50 flex items-center justify-center text-yellow-400 active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[19px]">crop_free</span>
+</button>
+<!-- More Vertical Options (⋮) -->
+<button aria-label="Más opciones" class="w-9 h-9 flex items-center justify-center text-white/90 hover:text-white active:opacity-60 transition-opacity" type="button">
+<span class="material-symbols-outlined text-[22px]">more_vert</span>
+</button>
+</div>
+</header>
+<!-- MID-LOWER HUD: Speedometer / Sensitivity Indicator Pill (Left Floating) -->
+<div class="absolute bottom-24 left-4 z-30 pointer-events-auto"><div class="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-xl border border-white/10 shadow-lg"><span class="material-symbols-outlined text-[17px] text-white/80">speed</span><div class="w-16 h-1 rounded-full bg-white/20 relative overflow-hidden flex items-center"><div class="w-2/3 h-full bg-white/70 rounded-full"></div><div class="absolute left-2/3 -translate-x-1/2 w-2 h-2 rounded-full bg-white shadow-sm"></div></div><span class="text-[12px] font-semibold text-white/90 tracking-tight">5</span></div></div>
+<!-- BOTTOM FLOATING ACTION DOCK (Exact match to Reference Image) -->
+<footer class="relative z-30 pb-safe pt-2 bg-gradient-to-t from-black/95 via-black/85 to-transparent backdrop-blur-md w-full flex flex-col items-center">
+<div class="w-full max-w-md px-6 py-2 flex items-center justify-between">
+<!-- 1. Importar (Sheet with down arrow) -->
+<button class="flex flex-col items-center justify-center min-w-[56px] text-white/90 hover:text-white active:scale-95 transition-all group" type="button">
+<div class="w-9 h-9 flex items-center justify-center text-white/95 group-hover:text-white">
+<span class="material-symbols-outlined text-[24px]">save_alt</span>
+</div>
+<span class="text-[11px] font-medium tracking-tight text-white/80 mt-0.5">Importar</span>
+</button>
+<!-- 2. Páginas Acumuladas (Stacked Sheets Counter) -->
+
+<!-- 3. MAIN SHUTTER BUTTON (Large circular with crisp white ring & centered document icon) -->
+<div class="flex items-center justify-center px-1">
+<button aria-label="Capturar página" class="relative w-[70px] h-[70px] rounded-full p-[3.5px] border-2 border-white flex items-center justify-center bg-black/40 backdrop-blur-md active:scale-90 transition-transform duration-150 shadow-[0_0_20px_rgba(255,255,255,0.15)] group" id="mainCaptureBtn" type="button">
+<div class="w-full h-full rounded-full bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-white text-[28px] font-light">description</span>
+</div>
+</button>
+</div>
+<!-- Spacer for visual symmetry / alignment balance -->
+<div class="w-2 hidden"></div>
+<!-- 4. Flash Toggle (Flash off icon) -->
+<button aria-label="Alternar flash" class="flex flex-col items-center justify-center min-w-[56px] text-white/90 hover:text-white active:scale-95 transition-all group" id="flashToggleBtn" type="button">
+<div class="w-9 h-9 flex items-center justify-center text-white/95 group-hover:text-white">
+<span class="material-symbols-outlined text-[24px]" id="flashIcon">flash_off</span>
+</div>
+<span class="text-[11px] font-medium tracking-tight text-white/80 mt-0.5">Flash</span>
+</button>
+</div>
+<!-- Native iOS Bottom Home Indicator Bar -->
+<div class="w-32 h-1 bg-white/80 rounded-full mt-2 mb-1 pointer-events-none"></div>
+</footer>
+<!-- Interactive Feedback Script -->
+<script>
+    (function initOverlayInteractions() {
+      // Shutter haptic animation
+      const captureBtn = document.getElementById('mainCaptureBtn');
+      if (captureBtn) {
+        captureBtn.addEventListener('click', function() {
+          captureBtn.classList.add('scale-90', 'border-[#007aff]');
+          setTimeout(() => {
+            captureBtn.classList.remove('scale-90', 'border-[#007aff]');
+          }, 180);
+        });
+      }
+
+      // Flash toggle state
+      const flashBtn = document.getElementById('flashToggleBtn');
+      const flashIcon = document.getElementById('flashIcon');
+      let isFlashOn = false;
+      if (flashBtn && flashIcon) {
+        flashBtn.addEventListener('click', function() {
+          isFlashOn = !isFlashOn;
+          if (isFlashOn) {
+            flashIcon.textContent = 'flash_on';
+            flashIcon.classList.add('text-yellow-400');
+          } else {
+            flashIcon.textContent = 'flash_off';
+            flashIcon.classList.remove('text-yellow-400');
+          }
+        });
+      }
+    })();
+  </script>
+
+
+
+
+</body></html>
